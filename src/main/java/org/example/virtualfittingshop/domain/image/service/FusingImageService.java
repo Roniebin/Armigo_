@@ -1,6 +1,6 @@
-package org.example.virtualfittingshop.domain.service;
+package org.example.virtualfittingshop.domain.image.service;
 
-import org.example.virtualfittingshop.domain.dto.RequestImageDto;
+import org.example.virtualfittingshop.domain.image.dto.RequestFusingImage;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
@@ -12,10 +12,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Transactional
 @Service
-public class ImageService {
+public class FusingImageService {
     private final String FASTAPI_URL = "http://localhost:8000/data";
 
-    public String callDiffusionApi(RequestImageDto requestImageDto) throws Exception {
+    public String callFusionApi(RequestFusingImage requestImageDto) throws Exception {
         HttpEntity<MultiValueMap<String, Object>> requestEntity  = createMultipartRequest(requestImageDto.getImage1(), requestImageDto.getImage2());
         ResponseEntity<String> response = sendRequestToFastAPI(requestEntity);
         return handleResponse(response);

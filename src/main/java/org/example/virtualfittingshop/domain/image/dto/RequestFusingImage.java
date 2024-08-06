@@ -1,10 +1,10 @@
-package org.example.virtualfittingshop.domain.dto;
+package org.example.virtualfittingshop.domain.image.dto;
 
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
 @Data
-public class RequestImageDto {
+public class RequestFusingImage {
     @Override
     public String toString() {
         return "TempDto{" +
@@ -15,5 +15,4 @@ public class RequestImageDto {
 
     private MultipartFile image1;
     private MultipartFile image2;
-
 }

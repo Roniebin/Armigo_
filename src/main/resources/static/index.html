@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>쇼핑몰 메인 페이지</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
 <header>
@@ -21,45 +21,51 @@
 <main>
     <section class="product-list">
         <div class="product-item">
-            <img src="image/1.jpg" alt="Product 1">
-            <h2>Product 1</h2>
+            <img src="/image/1.jpg" alt="Product 1">
+            <h2>1</h2>
             <p>$49.99</p>
         </div>
         <div class="product-item">
             <img src="image/2.jpg" alt="Product 2">
-            <h2>Product 2</h2>
+            <h2>2</h2>
             <p>$59.99</p>
         </div>
         <div class="product-item">
-            <img src="image/3.jpg" alt="Product 3">
-            <h2>Product 3</h2>
+            <img src="/image/3.jpg" alt="Product 3">
+            <h2>3</h2>
             <p>$39.99</p>
         </div>
         <div class="product-item">
-            <img src="image/4.jpg" alt="Product 4">
-            <h2>Product 3</h2>
+            <img src="/image/4.jpg" alt="Product 4">
+            <h2>4</h2>
             <p>$39.99</p>
         </div>
         <div class="product-item">
-            <img src="image/5.jpg" alt="Product 5">
-            <h2>Product 3</h2>
+            <img src="/image/5.jpg" alt="Product 5">
+            <h2>5</h2>
             <p>$39.99</p>
         </div>
         <div class="product-item">
-            <img src="image/6.jpg" alt="Product 6">
-            <h2>Product 3</h2>
+            <img src="/image/6.jpg" alt="Product 6">
+            <h2>6</h2>
             <p>$39.99</p>
         </div>
         <!-- 추가 제품을 여기에 배치할 수 있습니다 -->
     </section>
-</main>
-<footer>
-    <p>© 2024 쇼핑몰 이름. All Rights Reserved.</p>
-    <div class="social-media">
-        <a href="#">Facebook</a>
-        <a href="#">Twitter</a>
-        <a href="#">Instagram</a>
+
+    <!-- Modal Structure -->
+    <div id="productModal" class="ReactModal__Overlay" style="display: none;">
+        <div class="ReactModal__Content">
+            <div class="product-content">
+                <h2 id="productTitle">Product Title</h2>
+                <img id="productImage" src="" alt="Product Image">
+                <p id="productPrice">Product Price</p>
+                <button id="saveAndGo">Save & Go</button>
+                <button id="closeModal">Close</button>
+            </div>
+        </div>
     </div>
-</footer>
+</main>
+<script src="js/main.js"></script>
 </body>
 </html>

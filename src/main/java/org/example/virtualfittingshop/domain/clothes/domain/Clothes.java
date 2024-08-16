@@ -16,8 +16,8 @@ public class Clothes {
     private Long id;
     private String name;
     private String description;
+    private String price;
     private Long quantity;
-
     @OneToMany(mappedBy = "image")
     private List<Image> imageList = new ArrayList<>();
 

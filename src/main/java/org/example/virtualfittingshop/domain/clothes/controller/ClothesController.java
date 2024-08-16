@@ -14,7 +14,8 @@ import java.util.List;
 @RequestMapping("/clothes")
 @RequiredArgsConstructor
 public class ClothesController {
-    private final FusingImageService imageService;
+    private final FusingImageService fusingImageService;
+
     @GetMapping("/getList")
     public ResponseEntity<List<ResponseGetClothes>> getClothes() {
         //getClothesList
@@ -22,9 +23,9 @@ public class ClothesController {
     }
 
     @PostMapping("/fusing")
-    public ResponseEntity<ResponseGetClothes> diffUsingClothes(@ModelAttribute RequestFusingImage requestFusingImage) throws Exception {
+    public ResponseEntity<String> diffUsingClothes(@ModelAttribute RequestFusingImage requestFusingImage) throws Exception {
         //send image data to model
-        String imageUrl = imageService.callFusionApi(requestFusingImage);
-        return ResponseEntity.ok(new ResponseGetClothes());
+        String tempReturnDAta = fusingImageService.callFusionApi(requestFusingImage);
+        return ResponseEntity.ok(tempReturnDAta);
     }
 }

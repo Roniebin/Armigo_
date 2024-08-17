@@ -1,13 +1,13 @@
 package org.example.virtualfittingshop.domain.clothes.domain;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.example.virtualfittingshop.domain.image.domain.Image;
-
-import java.util.ArrayList;
-import java.util.List;
+import lombok.NoArgsConstructor;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 public class Clothes {
     @Id
@@ -18,7 +18,4 @@ public class Clothes {
     private String description;
     private String price;
     private Long quantity;
-    @OneToMany(mappedBy = "image")
-    private List<Image> imageList = new ArrayList<>();
-
 }

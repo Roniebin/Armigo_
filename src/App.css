@@ -1,0 +1,94 @@
+.App{
+ margin:auto;
+ height:auto;
+}
+
+.nav{
+  position: fixed;
+  top: 0;
+  color: red;
+}
+
+.searching-bar{
+
+}
+.shop-main{
+  width:100%;
+  height:100%;
+  max-width: 1500px;
+  margin:auto;
+  display:flex
+}
+
+.shop-options{
+  width:25%;
+  height:auto;;
+  font-size: 14px;
+  padding:20px;
+}
+.shop-options-stickybox{
+  position: sticky;
+  top:150px;
+}
+.shop-options span{
+  margin-top: 5px;
+  display:block;
+  width:100%;
+}
+.shop-category{
+  height:120px;
+  margin-top:30px;
+  padding-left:20%;
+  cursor: pointer;
+}
+
+.options:hover{
+  background-color: #e2e2e2;
+}
+
+.shop-filter{
+  height:200px;
+  margin-top:20px;
+  padding-left:20%;
+}
+.shop-lists{
+  width:75%;
+  flex-wrap: wrap;
+  padding:20px;
+  height:auto;
+  display:flex;
+  
+}
+
+.shop-item{
+  width:300px;
+  height:280px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.shop-item-image{
+  height:60%
+}
+
+.shop-item-image img{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.shop-item-info{
+  padding:20px;
+  font-size: 12px;
+  color:gray
+}
+
+
+.shop-item-info p{
+  font-weight: bold;
+  font-size: 14px;
+  color:black;
+  margin-bottom: 0px;
+  
+}

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.example.virtualfittingshop.domain.member.domain.Address;
 @Entity
 @NoArgsConstructor
@@ -12,9 +13,10 @@ import org.example.virtualfittingshop.domain.member.domain.Address;
 public class Delivery {
     @Id
     @Column(name = "delivery_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
 
+    @Setter
     @OneToOne(mappedBy = "delivery")
     private Order order;
 

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.example.virtualfittingshop.domain.clothes.domain.Clothes;
 @Entity
 @NoArgsConstructor
@@ -11,15 +12,19 @@ import org.example.virtualfittingshop.domain.clothes.domain.Clothes;
 @Getter
 public class OrderItem {
     @Id
-    @Column(name = "orderitem_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_item_id")
+    @GeneratedValue
     private Long id;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "clothes_id")
     private Clothes clothes;
+
+    @Setter
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
     private Order order;
+
     private int quantity;
 
 }

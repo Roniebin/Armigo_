@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+// 상세페이지
+
 function Detail(props){
 
     let [item]=useState(props.item);

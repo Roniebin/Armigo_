@@ -8,9 +8,9 @@ import Detail from './detail';
 import Items from './Items';
 function App() {
 
-  let [items]= useState(data)
-  let [location,setLocation]=useState(0);
-  let [id,setId]=useState(0);
+  let [items]= useState(data)  // 옷 오브젝트 데이터들
+  let [location,setLocation]=useState(0);    // 메인페이지, 상세페이지, 가상피팅페이지 구별하기위함
+  let [id,setId]=useState(0);  // 클릭한 옷의 제품번호
 
   return (
     <div className="App">
@@ -44,7 +44,7 @@ function App() {
         </div>
         {
    <div className="shop-lists">
-    
+    {/* 모든 옷들 리스트출력 */}
     {
       location== 0 ?
       items.map(function(item, i) {
@@ -57,10 +57,13 @@ function App() {
             setId={setId}
           />
         );
-      }):  location== 1 ?
+      }):  location == 1 ?
     
+        //상세페이지
        <Detail item={items[id]}/>
-      : null
+      : 
+      // 가상피팅 페이지 올릴예정
+      null
     }
   </div> 
 }

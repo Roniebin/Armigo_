@@ -4,19 +4,19 @@ import {Button, Navbar, Container, Nav} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import data from './data';
 import { useState } from 'react';
-
+import Detail from './detail';
+import Items from './Items';
 function App() {
 
-  let [items,setItems]= useState(data)
+  let [items]= useState(data)
+  let [location,setLocation]=useState(0);
+  let [id,setId]=useState(0);
 
   return (
     <div className="App">
        <Navbar style={{position:"sticky",top:0}}bg="dark" variant="dark">
         <Container>
-        <Navbar.Brand href="#home">Armigo</Navbar.Brand>
-        <Nav className="me-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
-        </Nav>
+        <Navbar.Brand href="/" onClick={()=>{setLocation(0)}}>Armigo</Navbar.Brand>
         <input type="text" className="searching-bar" placeholder="Search.."></input>
         </Container>
       </Navbar>
@@ -42,37 +42,32 @@ function App() {
           </div>
           
         </div>
-
-
-        <div className="shop-lists">
-            {
-              items.map(function(item,i){
-                return(
-                  <Item item={item} i={i}></Item>
-                )
-              })
-            }
-        </div>
+        {
+   <div className="shop-lists">
+    
+    {
+      location== 0 ?
+      items.map(function(item, i) {
+        return (
+          <Items 
+            key={i} 
+            item={item}  
+            setLocation={setLocation}
+            location={location}
+            setId={setId}
+          />
+        );
+      }):  location== 1 ?
+    
+       <Detail item={items[id]}/>
+      : null
+    }
+  </div> 
+}
       </div>
     </div>
   );
 }
 
-function Item(props){
-  return (
-            <div className="shop-item">
-                <div className="shop-item-image">
-                <img src="http://via.placeholder.com/298x180" alt=""></img>
-                </div>
-                <div className="shop-item-info">
-                    <p>{props.item.name}</p>
-                    <span>{props.item.description}</span>
-                    <br></br>  <br></br>
-                    <p>{props.item.price}</p>
-                </div>
-            </div>
-  )
-
-}
 
 export default App;

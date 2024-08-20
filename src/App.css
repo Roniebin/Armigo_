@@ -1,6 +1,7 @@
 .App{
  margin:auto;
  height:auto;
+
 }
 
 .nav{
@@ -9,9 +10,6 @@
   color: red;
 }
 
-.searching-bar{
-
-}
 .shop-main{
   width:100%;
   height:100%;
@@ -28,7 +26,7 @@
 }
 .shop-options-stickybox{
   position: sticky;
-  top:150px;
+  top:200px;
 }
 .shop-options span{
   margin-top: 5px;
@@ -57,7 +55,7 @@
   padding:20px;
   height:auto;
   display:flex;
-  
+
 }
 
 .shop-item{
@@ -91,4 +89,59 @@
   color:black;
   margin-bottom: 0px;
   
+}
+
+.shop-lists-detail{
+  display:flex;
+  width:100%;
+  height:auto;
+
+}
+
+.lists-detail{
+  width:50%;
+  height:100%;
+  margin-left: 20px;
+  padding:20px;
+}
+
+.detail-img{
+  width:100%;
+  height:500px;
+}
+
+.virtual-fitting{
+  width:100%;
+  margin-top:20px;
+  border:1px solid black;
+}
+
+.detail-box{
+  display: flex;
+  margin-top:200px;
+  width: 100%;
+}
+.detail-box div{
+  width:50%;
+}
+.like{
+ width:100%;
+ background-color: white;
+  border: 1px solid black;
+}
+.detail-box0{
+  display:flex;
+  width:100%;
+  margin-top:5px;
+}
+.detail-box0 div{
+  width:50%;
+}
+
+.purchase{
+  width:100%;
+ border-left: 0px;
+ background-color: black;
+ color:white;
+ border: 1px solid black;
 }

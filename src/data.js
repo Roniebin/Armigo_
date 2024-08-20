@@ -1,56 +1,102 @@
-var data=[{
-    name : "짱 멋있는 티셔츠",
-    description:"입으면 따뜻하다..",
-    price :"10000",
-},{
-    name : "개쩌는 청바지",
-    description:"멋쟁이가 되어보자",
-    price :"49000",
-},{
-    name : "엘레강스한 드레스",
-    description:"당신도 뉴진스 하니가 될거야",
-    price :"79000",
-},{
-    name : "아늑한 스웨터",
-    description:"이것만 입으면 당신도 곰돌이 탈출?!",
-    price :"39900",
-},{
-    name : "아늑한 스웨터",
-    description:"이것만 입으면 당신도 곰돌이 탈출?!",
-    price :"39900",
-},{
-    name : "아늑한 스웨터",
-    description:"이것만 입으면 당신도 곰돌이 탈출?!",
-    price :"39900",
-},{
-    name : "아늑한 스웨터",
-    description:"이것만 입으면 당신도 곰돌이 탈출?!",
-    price :"39900",
-},{
-    name : "아늑한 스웨터",
-    description:"이것만 입으면 당신도 곰돌이 탈출?!",
-    price :"39900",
-},{
-    name : "아늑한 스웨터",
-    description:"이것만 입으면 당신도 곰돌이 탈출?!",
-    price :"39900",
-},{
-    name : "아늑한 스웨터",
-    description:"이것만 입으면 당신도 곰돌이 탈출?!",
-    price :"39900",
-},{
-    name : "아늑한 스웨터",
-    description:"이것만 입으면 당신도 곰돌이 탈출?!",
-    price :"39900",
-},{
-    name : "아늑한 스웨터",
-    description:"이것만 입으면 당신도 곰돌이 탈출?!",
-    price :"39900",
-},{
-    name : "아늑한 스웨터",
-    description:"이것만 입으면 당신도 곰돌이 탈출?!",
-    price :"39900",
-}
-]
-
+var data = [  {
+    name: "베이직 티셔츠",
+    description: "기본에 충실한 베이직 아이템",
+    price: "8000",
+    delivery: "1500",
+    discount: "1000",
+    cnt: "0",
+    id: "0",
+  },
+    {
+      name: "짱 멋있는 티셔츠",
+      description: "입으면 따뜻하다..",
+      price: "10000",
+      delivery: "2000",
+      discount: "3000",
+      cnt: "0",
+      id: "1",
+    },
+    {
+      name: "스타일리시 후드티",
+      description: "편안한 착용감, 모든 계절에 적합",
+      price: "15000",
+      delivery: "2500",
+      discount: "2000",
+      cnt: "0",
+      id: "2",
+    },
+    {
+      name: "가벼운 자켓",
+      description: "바람을 막아주는 최고의 선택",
+      price: "30000",
+      delivery: "3000",
+      discount: "5000",
+      cnt: "0",
+      id: "3",
+    },
+    {
+      name: "따뜻한 니트",
+      description: "겨울에 입기 좋은 포근한 니트",
+      price: "20000",
+      delivery: "2000",
+      discount: "4000",
+      cnt: "0",
+      id: "4",
+    },
+    {
+      name: "캐주얼 반바지",
+      description: "활동하기 편한 캐주얼 반바지",
+      price: "12000",
+      delivery: "1500",
+      discount: "1000",
+      cnt: "0",
+      id: "5",
+    },
+    {
+      name: "여름용 셔츠",
+      description: "시원한 소재로 만든 여름용 셔츠",
+      price: "18000",
+      delivery: "2000",
+      discount: "2500",
+      cnt: "0",
+      id: "6",
+    },
+    {
+      name: "모던한 슬랙스",
+      description: "오피스룩으로 제격인 슬랙스",
+      price: "22000",
+      delivery: "2500",
+      discount: "3000",
+      cnt: "0",
+      id: "7",
+    },
+    {
+      name: "레트로 재킷",
+      description: "스타일리시한 레트로 감성",
+      price: "35000",
+      delivery: "3000",
+      discount: "4000",
+      cnt: "0",
+      id: "8",
+    },
+    {
+      name: "일상용 운동화",
+      description: "편안한 착용감의 운동화",
+      price: "50000",
+      delivery: "3500",
+      discount: "5000",
+      cnt: "0",
+      id: "9",
+    },
+    {
+      name: "겨울용 패딩",
+      description: "한파에도 끄떡없는 패딩",
+      price: "80000",
+      delivery: "4000",
+      discount: "10000",
+      cnt: "0",
+      id: "10",
+    }
+  ];
+  
 export default data;

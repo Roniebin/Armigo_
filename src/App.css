@@ -1,8 +1,17 @@
 .App{
  margin:auto;
  height:auto;
-
 }
+
+.smallfont{
+  font-size: 12px;
+}
+
+
+.midiumfont{
+  font-size: 14px;
+}
+
 
 .nav{
   position: fixed;
@@ -107,13 +116,25 @@
 
 .detail-img{
   width:100%;
-  height:500px;
+  height:400px;
 }
 
-.virtual-fitting{
+.detail-subImg{
   width:100%;
+  height:100px;
+  margin-top: 10px;;
+  overflow-x: scroll;
+}
+
+.detail-subimg{
+  width:80px;
+  height:80px;
+  margin-right: 10px;;
+}
+.virtual-fitting{
   margin-top:20px;
   border:1px solid black;
+  width:100%;
 }
 
 .detail-box{
@@ -144,4 +165,54 @@
  background-color: black;
  color:white;
  border: 1px solid black;
+}
+
+.shop-virtual-fitting{
+  padding:20px;
+  display: flex;
+  width:100%;
+}
+.virtual-setting{
+  width:50%;
+}
+.file-upload{
+ padding-left:10px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  width:80%;
+  height:32px;
+}
+
+.file-upload input{
+  margin:auto;
+  font-size: 10px;
+  
+}
+
+.fitting-start{
+  width:300px;
+  height:100px;
+  background:skyblue;
+  border-radius: 10px;
+  border:1px solid skyblue;
+  font-size:20px;
+  margin-top:150px;
+  color: white;
+}
+
+.virtual-Img{
+  width:50%;
+}
+.virtaul-img{
+  width:90%;
+  height:500px;
+}
+
+.start{
+  opacity: 0;
+}
+
+.end{
+  opacity: 1;
+    transition : all 1s;
 }

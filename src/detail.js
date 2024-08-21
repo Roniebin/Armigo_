@@ -9,9 +9,15 @@ function Detail(props){
     return (
       <div className="shop-lists-detail">
             <div className="lists-detail">
-  
             <img className="detail-img" src={`${process.env.PUBLIC_URL}/public_assets/pic0.jpg`} alt=""></img>
+            
+            <div className="detail-subImg">
+            {/* 임시로 해놓은거 실제로는 map으로 이미지 추가 */}
+            <img className="detail-subimg" src={`${process.env.PUBLIC_URL}/public_assets/pic0.jpg`} alt=""></img>
+            <img className="detail-subimg" src={`${process.env.PUBLIC_URL}/public_assets/pic0.jpg`} alt=""></img>
+            <img className="detail-subimg" src={`${process.env.PUBLIC_URL}/public_assets/pic0.jpg`} alt=""></img>
             </div>
+           </div>
         <div className="lists-detail">
             <h4>{item.name}</h4><br></br>
           <div className="detail-box0">
@@ -41,7 +47,12 @@ function Detail(props){
                 </div>
               </div>
               
-              <button className="virtual-fitting">가상피팅</button>
+              <button className="virtual-fitting" onClick={()=>{
+                props.setLocation(2);
+                props.setId(props.id)
+                props.setFade("start")
+                console.log("ss");
+              }}>가상피팅</button>
             </div>
         </div> 
     )

@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 function Fitting(props)
 {
     return(
@@ -36,7 +38,12 @@ function Fitting(props)
                       alt=""
                     ></img>
                   </div>
-                  <button className="fitting-start">가상 피팅 </button>
+                  <button className="fitting-start" onClick={()=>{
+              
+                  // post로 이미지 2개 보내기
+                   axios.post('URL', {image1 : '///', image2 :"///"})
+                  
+                  }}>가상 피팅 </button>
                 </div>
                 <div className="virtual-Img">
                 

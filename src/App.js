@@ -7,19 +7,34 @@ import { useEffect, useState } from "react";
 import Detail from "./detail";
 import Items from "./Items";
 import Fitting from "./fitting";
+import axios from 'axios'
+
+
 function App() {
-  let [items] = useState(data); // 옷 오브젝트 데이터들
+  let [items,setItem] = useState(data); // 옷 오브젝트 데이터들
   let [location, setLocation] = useState(0); // 메인페이지, 상세페이지, 가상피팅페이지 구별하기위함
   let [id, setId] = useState(0); // 클릭한 옷의 제품번호
   let [fade,setFade]=useState('start')
+
+
+  useEffect(()=>{
+    axios.get('/clothes/List ').then((result)=>{
+      console.log(result.data)
+
+      // 가져온 데이터 바인딩
+      setItem(result);
+    })
+    .catch(()=>{
+      console.log('실패함')
+    })
+
+  })
 
   useEffect(()=>{
     setTimeout(() => {
       setFade('end')
     }, 50);
   })
-
-  
 
   return (
     <div className="App">

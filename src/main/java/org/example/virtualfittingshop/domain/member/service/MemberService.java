@@ -1,4 +1,4 @@
-package org.example.virtualfittingshop.domain;
+package org.example.virtualfittingshop.domain.member.service;
 
 import lombok.RequiredArgsConstructor;
 import org.example.virtualfittingshop.domain.member.domain.Member;

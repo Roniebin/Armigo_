@@ -8,6 +8,7 @@ import org.example.virtualfittingshop.domain.member.repository.MemberRepository;
 import org.example.virtualfittingshop.domain.order.domain.Delivery;
 import org.example.virtualfittingshop.domain.order.domain.Order;
 import org.example.virtualfittingshop.domain.order.domain.OrderItem;
+import org.example.virtualfittingshop.domain.order.dto.OrderSearch;
 import org.example.virtualfittingshop.domain.order.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,12 +41,12 @@ public class OrderService {
 
     @Transactional
     public void cancelOrder(Long orderId) {
-        Order order = orderRepository.findById(orderId);
 
+        Order order = orderRepository.findById(orderId);
         order.cancelOrder();
     }
 
-//    public List<Order> searchOrder(OrderSearch orderSearch){
-//
-//    }
+    public List<Order> searchOrder(OrderSearch orderSearch){
+        return orderRepository.findAllByCriteria(orderSearch);
+    }
 }

@@ -39,9 +39,17 @@ function Fitting(props)
                     ></img>
                   </div>
                   <button className="fitting-start" onClick={()=>{
-              
+                  
+                  
+
                   // post로 이미지 2개 보내기
                    axios.post('URL', {image1 : '///', image2 :"///"})
+                   .then((res)=>{
+                    console.log("이미지 받기 완료");
+                   }).catch((err)=>{
+                    console.log("이미지 받기 실패");
+                   })
+
                   
                   }}>가상 피팅 </button>
                 </div>

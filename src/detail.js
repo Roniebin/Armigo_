@@ -1,10 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // 상세페이지
 
 function Detail(props){
 
     let [item]=useState(props.item);
+
+    let [img,setImg]=useState('');
+
+    useEffect(()=>{
+      //이미지 가져오기
+
+      
+      setImg()
+    },[])
   
     return (
       <div className="shop-lists-detail">

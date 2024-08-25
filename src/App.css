@@ -12,11 +12,25 @@
   font-size: 14px;
 }
 
+.show{
+  display:none;
+}
+.login-btn{
+  border: none;
+  color:lightgray;
+  text-decoration: none;
+  margin-right: 10%;
+}
 
 .nav{
   position: fixed;
   top: 0;
   color: red;
+}
+
+
+.searching-bar{
+  width:35%;
 }
 
 .shop-main{
@@ -25,6 +39,10 @@
   max-width: 1500px;
   margin:auto;
   display:flex
+}
+
+.navbar-nav{
+  color:White;
 }
 
 .shop-options{

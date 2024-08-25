@@ -8,7 +8,7 @@ function Items(props){
               <div className="shop-item"  onClick={()=>{
     
                 props.setLocation(1)
-                console.log(props.item.id)
+                console.log("dd"+ props.location);
                 props.setId(props.item.id);
                 navigate(`/detail/${props.item.id}`)
                 console.log(props.item.id)

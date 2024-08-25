@@ -1,5 +1,6 @@
 package org.example.virtualfittingshop.domain.order.domain;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.*;
 import org.example.virtualfittingshop.domain.clothes.domain.Clothes;
@@ -12,18 +13,23 @@ public class OrderItem {
     @Id
     @Column(name = "order_item_id")
     @GeneratedValue
+    @Schema(description = "키")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "clothes_id")
+    @Schema(description = "옷 정보")
     private Clothes clothes;
 
     @Setter
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
+    @Schema(description = "주문 정보")
     private Order order;
 
+    @Schema(description = "주문 가격")
     private int orderPrice;
+    @Schema(description = "주문 수량")
     private int quantity;
 
     public static OrderItem createOrderItem(Clothes clothes, int quantity) {

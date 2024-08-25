@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
+
 public class OrderController {
     private final OrderService orderService;
     private final MemberService memberService;
@@ -35,7 +36,7 @@ public class OrderController {
     @PostMapping("/order")
     public String order(@RequestParam("memberId") Long memberId, @RequestParam("itemId") Long itemId, @RequestParam("count") int count){
 
-        Long order = orderService.order(memberId, itemId, count);
+        orderService.order(memberId, itemId, count);
         return "redirect:/orders";
     }
 

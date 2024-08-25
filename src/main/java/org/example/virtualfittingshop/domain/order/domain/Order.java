@@ -1,5 +1,6 @@
 package org.example.virtualfittingshop.domain.order.domain;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,22 +25,28 @@ public class Order {
     @Id
     @Column(name = "order_id")
     @GeneratedValue
+    @Schema(description = "키")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
+    @Schema(description = "주문 회원 정보")
     private Member member;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @Builder.Default
+    @Schema(description = "주문 상품 정보")
     private List<OrderItem> orderItemList = new ArrayList<>();
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="delivery_id")
+    @Schema(description = "배송지 정보")
     private Delivery delivery;
 
+    @Schema(description = "주문 일시")
     private LocalDateTime orderDate;
 
+    @Schema(description = "주문 상태")
     private OrderStatus orderStatus;
 
     public void setMember(Member member){

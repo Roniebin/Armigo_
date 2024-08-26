@@ -1,5 +1,9 @@
 package org.example.virtualfittingshop.domain.order.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreType;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -25,7 +29,7 @@ public class Order {
     @Id
     @Column(name = "order_id")
     @GeneratedValue
-    @Schema(description = "키")
+    @Schema(description = "key")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -36,6 +40,7 @@ public class Order {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @Builder.Default
     @Schema(description = "주문 상품 정보")
+    @JsonIgnore
     private List<OrderItem> orderItemList = new ArrayList<>();
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

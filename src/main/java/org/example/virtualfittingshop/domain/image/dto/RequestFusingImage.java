@@ -1,5 +1,7 @@
 package org.example.virtualfittingshop.domain.image.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -12,7 +14,11 @@ public class RequestFusingImage {
                 ", image2=" + image2 +
                 '}';
     }
-
+    @Schema(description = "사람 사진")
+    @NotEmpty
     private MultipartFile image1;
+
+    @Schema(description = "옷 사진")
+    @NotEmpty
     private MultipartFile image2;
 }

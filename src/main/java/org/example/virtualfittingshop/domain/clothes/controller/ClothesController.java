@@ -1,10 +1,9 @@
 package org.example.virtualfittingshop.domain.clothes.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.example.virtualfittingshop.domain.clothes.domain.Clothes;
 import org.example.virtualfittingshop.domain.clothes.service.ClothesService;
-import org.example.virtualfittingshop.domain.image.dto.RequestFusingImage;
-import org.example.virtualfittingshop.domain.image.service.FusingImageService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -13,10 +12,10 @@ import java.util.List;
 @RequestMapping("/clothes")
 @RequiredArgsConstructor
 public class ClothesController {
-    private final FusingImageService fusingImageService;
     private final ClothesService clothesService;
 
-    @GetMapping("/getList")
+    @GetMapping("/getAll")
+    @Operation(summary = "모든 옷 가져오기")
     public ResponseEntity<List<Clothes>> getAllClothes() {
         //getClothesList
         List<Clothes> allClothes = clothesService.findAllClothes();
@@ -24,7 +23,8 @@ public class ClothesController {
     }
 
     @GetMapping("/get")
-    public ResponseEntity<Clothes> getClotheById(@RequestParam Long id) {
+    @Operation(summary = "옷 한 벌 가져오가", description = "원하는 제품이 아이디 값 전달")
+    public ResponseEntity<Clothes> getClotheById(@RequestParam("clothes_id") Long id) {
 
         Clothes clothes = clothesService.findClothesById(id);
         return ResponseEntity.ok(clothes);

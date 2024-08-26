@@ -17,7 +17,7 @@ public class Delivery {
     @Id
     @Column(name = "delivery_id")
     @GeneratedValue
-    @Schema(description = "키")
+    @Schema(description = "key")
     private Long id;
 
     @Setter

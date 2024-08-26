@@ -1,59 +1,43 @@
 package org.example.virtualfittingshop.domain.order.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
-import org.example.virtualfittingshop.domain.clothes.domain.Clothes;
-import org.example.virtualfittingshop.domain.clothes.service.ClothesService;
-import org.example.virtualfittingshop.domain.member.domain.Member;
-import org.example.virtualfittingshop.domain.member.service.MemberService;
 import org.example.virtualfittingshop.domain.order.OrderService;
 import org.example.virtualfittingshop.domain.order.domain.Order;
 import org.example.virtualfittingshop.domain.order.dto.OrderSearch;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-
 public class OrderController {
     private final OrderService orderService;
-    private final MemberService memberService;
-    private final ClothesService clothesService;
-
-    @GetMapping("/order")
-    public String createForm(Model model) {
-
-        List<Member> members = memberService.findMembers();
-        List<Clothes> clothesList = clothesService.findAllClothes();
-
-        model.addAttribute("members", members);
-        model.addAttribute("items", clothesList);
-        return "order/orderForm";
-    }
 
     @PostMapping("/order")
-    public String order(@RequestParam("memberId") Long memberId, @RequestParam("itemId") Long itemId, @RequestParam("count") int count){
+    @Operation(summary = "주문하기")
+    public ResponseEntity<Void> order(@RequestParam("memberId") Long memberId, @RequestParam("itemId") Long itemId, @RequestParam("count") int count){
 
         orderService.order(memberId, itemId, count);
-        return "redirect:/orders";
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/orders")
-    public String orderList(@ModelAttribute("orderSearch") OrderSearch
-            orderSearch,Model model) {
+    @Operation(summary = "특정 회원의 주문목록 가져오기")
+    public ResponseEntity<List<Order>> orderList(@ModelAttribute("orderSearch") OrderSearch
+            orderSearch) {
 
         List<Order> orders = orderService.searchOrder(orderSearch);
-        model.addAttribute("orders", orders);
-        return "order/orderList";
+        return ResponseEntity.ok(orders);
     }
 
-    @PostMapping("/orders/{orderId}/cancel")
-    public String cancelOrder(@PathVariable("orderId") Long orderId){
+    @PostMapping("/orders/cancel")
+    @Operation(summary = "주문 취소")
+    public ResponseEntity<Void> cancelOrder(@RequestParam("orderId") Long orderId){
 
         orderService.cancelOrder(orderId);
-        return "redirect:/orders";
+        return ResponseEntity.ok().build();
     }
 
 

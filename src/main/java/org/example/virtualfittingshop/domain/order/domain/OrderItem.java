@@ -1,5 +1,6 @@
 package org.example.virtualfittingshop.domain.order.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import lombok.*;
@@ -13,7 +14,7 @@ public class OrderItem {
     @Id
     @Column(name = "order_item_id")
     @GeneratedValue
-    @Schema(description = "키")
+    @Schema(description = "key")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)

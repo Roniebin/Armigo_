@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.example.virtualfittingshop.global.exception.NotEnoughStockException;
+import org.example.virtualfittingshop.global.exception.Exception;
 
 @Entity
 @NoArgsConstructor
@@ -17,14 +17,18 @@ public class Clothes {
     @Id
     @Column(name = "clothes_id")
     @GeneratedValue
-    @Schema(description = "아이디")
+    @Schema(description = "key")
     private Long id;
+
     @Schema(description = "제품명")
     private String name;
+
     @Schema(description = "제품 설명")
     private String description;
+
     @Schema(description = "가격")
     private int price;
+
     @Schema(description = "수량")
     private int quantity;
 
@@ -35,7 +39,7 @@ public class Clothes {
     public void subQuantity(int quantity) {
         int restQuantity = this.quantity - quantity;
         if(restQuantity <0){
-            throw new NotEnoughStockException("재고 에러");
+            throw new Exception("재고 에러");
         }
         this.quantity = restQuantity;
 

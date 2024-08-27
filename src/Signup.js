@@ -2,35 +2,25 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button, Container, Row, Col, Alert } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Routes, Route, Link, Outlet } from "react-router-dom";
 
-function LoginForm() {
+function Signup() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
-    let [signup,setSignup]=useState(0)
-
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         
-        // 로그인 로직 처리 (예: API 호출)
-        if (email === 'user@example.com' && password === 'password') {
-            // 성공적으로 로그인하면 리다이렉트
-            
-            navigate('/');
-        } else {
-            // 로그인 실패 시 에러 메시지 설정
-            setError('Invalid email or password');
-        }
+       // 회원가입 POST 
+       
     };
 
     return (
-
         <Container style={{marginTop:"10%"}}>
             <Row className="justify-content-md-center">
                 <Col xs={12} md={6}>
-                    <h2 className="mt-5">Login</h2>
+                    <h2 className="mt-5">Sign up</h2>
                     {error && <Alert variant="danger">{error}</Alert>}
                     <Form onSubmit={handleSubmit}>
                         <Form.Group controlId="formBasicEmail" className="mb-3">
@@ -56,14 +46,9 @@ function LoginForm() {
                         </Form.Group>
 
                         <Button variant="primary" type="submit">
-                            Login
-                        </Button>
-                        <Link
-                            to="/signup"
-                            className="signup-btn"
-                        > 
                             Sign up
-                        </Link>
+                        </Button>
+                       
                     </Form>
                     
                 </Col>
@@ -72,4 +57,4 @@ function LoginForm() {
     );
 }
 
-export default LoginForm;
+export default Signup;

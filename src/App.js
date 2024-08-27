@@ -10,6 +10,7 @@ import Fitting from "./fitting";
 import axios from "axios";
 import LoginForm from './LoginForm';
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
+import Signup from "./Signup";
 
 function App() {
   let [items, setItem] = useState(data); // 옷 오브젝트 데이터들
@@ -22,7 +23,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("/clothes/List ")
+      .get("/join")
       .then((result) => {
         console.log(result.data);
 
@@ -71,6 +72,7 @@ function App() {
 
       <Routes>
         <Route path="/login" element={<LoginForm />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
 
       <div className={show}>

@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-
 @Getter
 @Embeddable
 @AllArgsConstructor
@@ -15,8 +14,7 @@ public class Address {
     @Schema(description = "시")
     private String city;
     @Schema(description = "도로명")
-    private String Street;
+    private String street;
     @Schema(description = "우편번호")
-    private String Zipcode;
-
+    private String zipcode;
 }

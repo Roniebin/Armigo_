@@ -28,6 +28,9 @@ public class Member {
     @Schema(description = "회원명")
     private String name;
 
+    @Schema(description = "비밀번호")
+    private String password;
+
     @Schema(description = "MemberType으로 BUYER와 SELLER로 정의")
     private MemberType type;
 

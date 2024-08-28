@@ -6,7 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.example.virtualfittingshop.global.exception.Exception;
+import org.example.virtualfittingshop.global.exception.AppException;
+import org.springframework.http.HttpStatus;
 
 @Entity
 @NoArgsConstructor
@@ -39,7 +40,7 @@ public class Clothes {
     public void subQuantity(int quantity) {
         int restQuantity = this.quantity - quantity;
         if(restQuantity <0){
-            throw new Exception("재고 에러");
+            throw new AppException(HttpStatus.CONFLICT,"재고 에러");
         }
         this.quantity = restQuantity;
 

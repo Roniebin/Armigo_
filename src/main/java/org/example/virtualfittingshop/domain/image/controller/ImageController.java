@@ -1,7 +1,6 @@
 package org.example.virtualfittingshop.domain.image.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import lombok.extern.slf4j.Slf4j;
 import lombok.RequiredArgsConstructor;
 import org.example.virtualfittingshop.domain.image.dto.RequestFusingImage;

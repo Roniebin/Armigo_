@@ -2,7 +2,6 @@ package org.example.virtualfittingshop.global.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -23,7 +22,10 @@ public class SecurityConfig {
                         //cors
                         .cors(cors -> cors.configurationSource(request -> {
                            var corsConfiguration =  new CorsConfiguration();
-                           corsConfiguration.setAllowCredentials(true);
+                            corsConfiguration.setAllowedOrigins(List.of("*"));  // 모든 도메인 허용
+                            corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));  // 모든 HTTP 메서드 허용
+                            corsConfiguration.setAllowedHeaders(List.of("*"));  // 모든 헤더 허용
+                            corsConfiguration.setAllowCredentials(true);  // 자격 증명(쿠키, Authorization 헤더 등) 허용
                             return corsConfiguration;
                         }))
                         .csrf((auth) -> auth.disable())

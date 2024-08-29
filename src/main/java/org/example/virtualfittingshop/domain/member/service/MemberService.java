@@ -1,6 +1,8 @@
 package org.example.virtualfittingshop.domain.member.service;
 
+import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.example.virtualfittingshop.domain.member.domain.Address;
 import org.example.virtualfittingshop.domain.member.domain.Member;
 import org.example.virtualfittingshop.domain.member.dto.MemberForm;
@@ -11,21 +13,24 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
+@Slf4j
 @RequiredArgsConstructor
+
 public class MemberService {
 
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
-
     @Transactional
     public Long join(MemberForm memberForm) {
 
         validateDuplicatedMember(memberForm.getName());
+        log.info("{}, {}, {}, {}",memberForm.getName(), memberForm.getPassword(), memberForm.getCity(), memberForm.getType());
         String encodedPassword = passwordEncoder.encode(memberForm.getPassword());
         Address address = new Address(memberForm.getCity(), memberForm.getStreet(), memberForm.getZipcode());
 

@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.example.virtualfittingshop.domain.member.domain.Member;
 import org.example.virtualfittingshop.domain.order.domain.Order;
 import org.example.virtualfittingshop.domain.order.dto.OrderSearch;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
@@ -16,6 +18,7 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class OrderRepository {
+    private static final Logger log = LoggerFactory.getLogger(OrderRepository.class);
     private final EntityManager em;
 
     public void save(Order order) {
@@ -41,6 +44,7 @@ public class OrderRepository {
 //    }
 
     public List<Order> findAllByCriteria(OrderSearch orderSearch) {
+        log.info("{}, {}",orderSearch.getMemberName(), orderSearch.getOrderStatus());
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Order> cq = cb.createQuery(Order.class);
         Root<Order> o = cq.from(Order.class);

@@ -8,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.List;
 
@@ -26,6 +27,10 @@ public class SecurityConfig {
                             corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));  // 모든 HTTP 메서드 허용
                             corsConfiguration.setAllowedHeaders(List.of("*"));  // 모든 헤더 허용
                             corsConfiguration.setAllowCredentials(true);  // 자격 증명(쿠키, Authorization 헤더 등) 허용
+
+
+                            UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+                            source.registerCorsConfiguration("/**", corsConfiguration);
                             return corsConfiguration;
                         }))
                         .csrf((auth) -> auth.disable())

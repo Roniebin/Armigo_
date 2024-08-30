@@ -23,10 +23,10 @@ public class SecurityConfig {
                         //cors
                         .cors(cors -> cors.configurationSource(request -> {
                            var corsConfiguration =  new CorsConfiguration();
-                            corsConfiguration.setAllowedOrigins(List.of("*"));  // 모든 도메인 허용
+                            corsConfiguration.setAllowedOrigins(List.of("http://localhost:3000"));  // 모든 도메인 허용
                             corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));  // 모든 HTTP 메서드 허용
                             corsConfiguration.setAllowedHeaders(List.of("*"));  // 모든 헤더 허용
-                            corsConfiguration.setAllowCredentials(false);  // 자격 증명(쿠키, Authorization 헤더 등) 허용
+                            corsConfiguration.setAllowCredentials(true);  // 자격 증명(쿠키, Authorization 헤더 등) 허용
 
                             return corsConfiguration;
                         }))

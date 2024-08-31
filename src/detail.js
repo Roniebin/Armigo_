@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
+import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
 
 // 상세페이지
 
 function Detail(props){
 
     let [item]=useState(props.item);
-
+    let navigate = useNavigate();
     let [img,setImg]=useState('');
 
    
@@ -54,7 +55,8 @@ function Detail(props){
                 props.setLocation(2);
                 props.setId(props.id)
                 props.setFade("start")
-                console.log("ss");
+                navigate(`/detail/${props.item.id}/virtual-fitting`)
+          
               }}>가상피팅</button>
             </div>
         </div> 

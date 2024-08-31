@@ -3,9 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { Form, Button, Container, Row, Col, Alert } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route, Link, Outlet } from "react-router-dom";
-
+import axios from 'axios';
+import CryptoJS from 'crypto-js';
 function LoginForm() {
-    const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
@@ -13,16 +14,31 @@ function LoginForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
-        // 로그인 로직 처리 (예: API 호출)
-        if (email === 'user@example.com' && password === 'password') {
-            // 성공적으로 로그인하면 리다이렉트
+
+        axios.post('http://ec2-3-39-119-168.ap-northeast-2.compute.amazonaws.com:8080/member/login', {
+            name: name,
+            password: password,
             
-            navigate('/');
-        } else {
-            // 로그인 실패 시 에러 메시지 설정
-            setError('Invalid email or password');
+        }).then(res => {
+            console.log(res.password)
+        
+            // 로그인 로직 처리 (예: API 호출)
+            if (name === res.data.id && password === res.data.password) {
+                // 성공적으로 로그인하면 리다이렉트
+                alert("아직")
+                navigate('/');
+            } else {
+                // 로그인 실패 시 에러 메시지 설정
+                setError('Invalid email or password');
         }
+            alert("성공")
+        })
+        .catch(err => {
+            console.error(err);
+            alert("로그인 실패");
+        });
+     
+        
     };
 
     return (
@@ -36,10 +52,10 @@ function LoginForm() {
                         <Form.Group controlId="formBasicEmail" className="mb-3">
                             <Form.Label>Email address</Form.Label>
                             <Form.Control 
-                                type="email" 
+                       
                                 placeholder="Enter email" 
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
                                 required 
                             />
                         </Form.Group>

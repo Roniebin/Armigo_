@@ -21,18 +21,19 @@ function App() {
 
   let navigate = useNavigate();
 
-  useEffect(() => {
-    axios
-      .get("/join")
-      .then((result) => {
-        console.log(result.data);
+  // useEffect(() => {
+  //   axios
+  //     .get("/join")
+  //     .then((result) => {
+  //       console.log(result.data);
 
-        // 가져온 데이터 바인딩
-        setItem(result);
-      })
-      .catch(() => {});
-  });
+  //       // 가져온 데이터 바인딩
+  //       setItem(result);
+  //     })
+  //     .catch(() => {});
+  // });
 
+  
   useEffect(() => {
     setTimeout(() => {
       setFade("end");
@@ -76,28 +77,7 @@ function App() {
           element={
             <div className={hide}>
               <div className="shop-main">
-                <div className="shop-options">
-                  <div className="shop-options-stickybox">
-                    <div className="shop-category">
-                      <p style={{ fontSize: "16px", fontWeight: "bold" }}>
-                        카테고리
-                      </p>
-                      <span className="options">상의</span>
-                      <span className="options">하의</span>
-                      <span className="options">뷰티</span>
-                    </div>
-
-                    <hr style={{ marginLeft: "20%", marginTop: "20px" }}></hr>
-                    <div className="shop-filter">
-                      <p style={{ fontSize: "16px", fontWeight: "bold" }}>
-                        필터
-                      </p>
-                      <span className="options">가격</span>
-                      <span className="options">사이즈</span>
-                      <span className="options">색상</span>
-                    </div>
-                  </div>
-                </div>
+                <Category/>
                 {
                   <div className={"shop-lists " + fade}>
                     {/* 모든 옷들 리스트출력 */}
@@ -139,7 +119,29 @@ function App() {
   );
 }
 
-function login() {
-  return <div></div>;
+function Category() {
+  return (
+    <div className="shop-options">
+    <div className="shop-options-stickybox">
+      <div className="shop-category">
+        <p style={{ fontSize: "16px", fontWeight: "bold" }}>
+          카테고리
+        </p>
+        <span className="options">상의</span>
+        <span className="options">하의</span>
+        <span className="options">뷰티</span>
+      </div>
+
+      <hr style={{ marginLeft: "20%", marginTop: "20px" }}></hr>
+      <div className="shop-filter">
+        <p style={{ fontSize: "16px", fontWeight: "bold" }}>
+          필터
+        </p>
+        <span className="options">가격</span>
+        <span className="options">사이즈</span>
+        <span className="options">색상</span>
+      </div>
+    </div>
+  </div>)
 }
 export default App;

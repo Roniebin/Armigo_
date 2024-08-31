@@ -8,13 +8,7 @@ function Detail(props){
 
     let [img,setImg]=useState('');
 
-    useEffect(()=>{
-      //이미지 가져오기
-
-      
-      setImg()
-    },[])
-  
+   
     return (
       <div className="shop-lists-detail">
             <div className="lists-detail">

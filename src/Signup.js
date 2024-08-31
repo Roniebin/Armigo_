@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Select from 'react-select';
 import axios from 'axios';
 
+
 function Signup() {
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
@@ -24,31 +25,71 @@ function Signup() {
     const handleTypeChange = (selectedOption) => {
         setType(selectedOption);
     };
-
     const handleSubmit = (e) => {
         e.preventDefault();
         
+        console.log(JSON.stringify({
+            name: name,
+            password: password,
+            type: type.value, // use type.value to send the selected type
+            city: city,
+            street: street,
+            zipcode: zipcode
+        }),)
         if (!type) {
             setError("Type is required");
             return;
         }
-
-        axios.post('http://ec2-43-203-172-221.ap-northeast-2.compute.amazonaws.com:8080/member/join', {
-            name : {name},
-            password :{password},
-            type: {type}, // 선택된 옵션의 value를 전송
-            city :{city},
-            street :{street},
-            zipcode :{zipcode}
+    
+        fetch('http://ec2-3-39-119-168.ap-northeast-2.compute.amazonaws.com:8080/member/join', {
+            method: 'POST', 
+            mode: 'cors', 
+            headers: {
+                'accept': '*/*',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: name,
+                password: password,
+                type: type.value, // use type.value to send the selected type
+                city: city,
+                street: street,
+                zipcode: zipcode
+            }),
         })
-        .then((res) => {
-            console.log(res);
-            alert("회원가입 완료");
-            navigate('/somepath'); // 회원가입 성공 후 이동할 경로 설정
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
         })
-        .catch(() => {
-            alert("회원가입 실패");
+        .then(data => {
+            console.log(JSON.stringify(data));
+            alert("Sign up successful!");
+            navigate('/'); // Replace '/somepath' with the actual path you want to navigate to
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            setError(`Sign up failed: ${error.message}`);
         });
+    
+        // axios.post('http://ec2-43-203-172-221.ap-northeast-2.compute.amazonaws.com:8080/member/join', {
+            // name : {name},
+            // password : {password},
+            // type: {type}, // type의 value를 전송
+            // city : {city},
+            // street : {street},
+            // zipcode : {zipcode}
+        // })
+        // .then(res => {
+        //     console.log(res);
+        //     alert("회원가입 완료");
+        //     navigate('/somepath'); // 회원가입 성공 후 이동할 경로 설정
+        // })
+        // .catch(err => {
+        //     console.error(err);
+        //     alert("회원가입 실패");
+        // });
     };
 
     return (

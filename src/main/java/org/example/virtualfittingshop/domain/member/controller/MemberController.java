@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.virtualfittingshop.domain.member.domain.Member;
 import org.example.virtualfittingshop.domain.member.dto.MemberForm;
 import org.example.virtualfittingshop.domain.member.dto.RequestLogin;
+import org.example.virtualfittingshop.domain.member.dto.ResponseLogin;
 import org.example.virtualfittingshop.domain.member.service.MemberService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,18 +31,20 @@ public class MemberController {
 
     @PostMapping("/login")
     @Operation(summary = "로그인", description = "회원이름으로 로그인, 회원 정보 반환됨")
-    public ResponseEntity<Member> login(@RequestBody RequestLogin requestLogin) {
+    public ResponseEntity<ResponseLogin> login(@RequestBody RequestLogin requestLogin) {
 
         log.info(requestLogin.getName());
         Member member = memberService.login(requestLogin);
-        return ResponseEntity.ok().body(member);
+        ResponseLogin responseLogin = new ResponseLogin(member.getId(), member.getName(), member.getType(), member.getAddress());
+        return ResponseEntity.ok().body(responseLogin);
     }
 
     @GetMapping("/getAll")
     @Operation(summary = "모든 회원 가져오기")
-    public ResponseEntity<List<Member>> memberList() {
+    public ResponseEntity<List<ResponseLogin>> memberList() {
 
         List<Member> members = memberService.findMembers();
-        return ResponseEntity.ok(members);
+        List<ResponseLogin> responseLoginList = members.stream().map(member -> new ResponseLogin(member.getId(), member.getName(), member.getType(), member.getAddress())).toList();
+        return ResponseEntity.ok(responseLoginList);
     }
 }

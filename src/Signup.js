@@ -75,8 +75,8 @@ function Signup() {
     };
 
     return (
-        <Container style={{ marginTop: "10%" }}>
-            <Row className="justify-content-md-center">
+        <Container style={{height:"800px"}}>
+            <Row className="justify-content-md-center signup-container">
                 <Col xs={12} md={6}>
                     <h2 className="mt-5">Sign up</h2><br></br>
                     {error && <Alert variant="danger">{error}</Alert>}

@@ -19,6 +19,9 @@ function App() {
   let [fade, setFade] = useState("start");
   let [hide, setHide] = useState("");
 
+  let [isLogin, setLogin] = useState(false);
+  let [user, setUser] = useState("");
+
   let navigate = useNavigate();
 
   // useEffect(() => {
@@ -56,20 +59,30 @@ function App() {
             className="searching-bar"
             placeholder="Search.."
           ></input>
-          <Link
-            to="/login"
-            className="login-btn"
-            onClick={() => {
-              setHide("hide");
-            }}
-          >
-            login
-          </Link>
+
+          <Link to="/creating-dress" style={{textDecoration:"none",color:"white"}} onClick={()=>{setFade("start")}}>드레스 제작</Link>
+
+          {isLogin == false ? (
+            <Link
+              to="/login"
+              className="login-btn"
+              onClick={() => {
+                setHide("hide");
+              }}
+            >
+              login
+            </Link>
+          ) : (
+            <span>{user} 님 </span>
+          )}
         </Container>
       </Navbar>
 
       <Routes>
-        <Route path="/login" element={<LoginForm />} />
+        <Route
+          path="/login"
+          element={<LoginForm setLogin={setLogin} setUser={setUser} />}
+        />
         <Route path="/signup" element={<Signup />} />
         <Route
           path="/"
@@ -99,7 +112,6 @@ function App() {
             </div>
           }
         />
-
         <Route
           path={`/detail/` + id}
           element={
@@ -119,16 +131,48 @@ function App() {
             </div>
           }
         />
-
-        <Route path={`/detail/${id}/virtual-fitting`} element={
-          <div className={hide}>
+        <Route
+          path={`/detail/${id}/virtual-fitting`}
+          element={
+            <div className={hide}>
               <div className="shop-main">
-                  <Category/>
-                  <Fitting/>
+                <Category />
+                <Fitting />
               </div>
+            </div>
+          }
+        />
+        ``````
+        <Route
+          path="/creating-dress"
+          element={
+          
+              <div className={"creatingDress "+fade}>
+                 <h3>당신만의 완벽한 웨딩 드레스를 만들어보세요</h3>
+                 
+                 <div className="creatingDress-container">
+                    <div className="creatingDress-setting component">
+                        <p style={{marginLeft:"0px"}}>웨딩 드레스 설명</p>
+                        <span style={{color:"gray",marginLeft:"0px"}}>원하는 웨딩 드레스의 특징을 자세히 적어주세요</span>
+                        <br></br>
+                        <input type="text" className="propmt" placeholder="예: 긴 소매와 레이스 데티일이 있는 우아한 스타일 드레스"></input>
+                        <p>복잡도</p>
+                        <input id="slider" type="range" min="0" max="100" list="tickmarks"/>
+                        
+                        <button class="createBtn">드레스 생성하기</button>
+                    </div>
+                    <div className="creatingDress-picture component">
+                        <h4>생성된 웨딩 드레스</h4>
+                        <img src="pic0.jpg" alt=""></img>
+                        <button className="picBtn">저장</button>
+                        <button className="picBtn">바로 사용</button>
+                    </div>
+                 </div>
               </div>
-            
-        }/>
+        
+          }
+        ></Route>
+        ``````
       </Routes>
     </div>
   );

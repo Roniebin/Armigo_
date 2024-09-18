@@ -245,3 +245,96 @@
   opacity: 1;
     transition : all 1s;
 }
+
+
+.creatingDress{
+  width:100vw;
+  height:auto;
+}
+
+.creatingDress h3{
+  text-align: center;
+  margin-top:50px;
+  font-weight: bold;
+}
+
+.creatingDress-container{
+  display: flex;
+  width:100%;
+  height:100%;
+ justify-content: center;
+ margin-top:30px;
+  
+}
+
+.component{
+  width:45%;
+  padding:20px;
+  background-color: white;
+  box-shadow: 1px 1px 1px 1px lightgray;
+  border-radius: 10px;
+  margin-right:10px;
+}
+
+.creatingDress-container :nth-child(1){
+  margin-left:20px;
+}
+.creatingDress-container :nth-child(2){
+  margin-left:20px;
+}
+.component p{
+  font-weight: bold;
+}
+.component span{
+  font-size: 14px;
+}
+.propmt{
+  width:100%;
+  font-size: 12px;
+  margin-top:10px;
+  margin-bottom: 50px;;
+  height:30px;
+}
+.complexity{
+  width:100%;
+  
+}
+
+#slider{
+  accent-color:#6A6DF2;
+  width:100%;
+  margin-bottom:200px;
+}
+
+.createBtn{
+  width:100%;
+  border: none;
+  background-color: #6A6DF2;
+  color:white;
+  border-radius: 10px;
+}
+
+.creatingDress-picture{
+  text-align: center;
+}
+.creatingDress-picture h4{
+  font-weight: bold;
+}
+
+.picBtn{
+  border: none;
+  background-color: #6A6DF2;
+  color:white;
+  border-radius: 10px;
+  width:auto;
+  margin-top:30px;
+  margin-right:10px;
+ padding:5px
+}
+
+.creatingDress-picture img{
+  width:90%;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px 1px lightgray;
+  height:77%;
+}

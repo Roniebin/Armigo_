@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route, Link, Outlet } from "react-router-dom";
 import axios from 'axios';
 import CryptoJS from 'crypto-js';
-function LoginForm() {
+function LoginForm(props) {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -20,18 +20,21 @@ function LoginForm() {
             password: password,
             
         }).then(res => {
-            console.log(res.password)
+            console.log(res)
         
             // 로그인 로직 처리 (예: API 호출)
             if (name === res.data.id && password === res.data.password) {
                 // 성공적으로 로그인하면 리다이렉트
-                alert("아직")
+                alert("성공")
+                props.setUser(name);
+                props.setLogin(true)
                 navigate('/');
             } else {
-                // 로그인 실패 시 에러 메시지 설정
+                // 로그인 실패 시 에러 메시지 설정  
                 setError('Invalid email or password');
-        }
-            alert("성공")
+                }
+
+           
         })
         .catch(err => {
             console.error(err);

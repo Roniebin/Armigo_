@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웨딩 드레스 만들기</title>
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #4f46e5;
+            --background-color: #f9fafb;
+            --text-color: #1f2937;
+            --light-text-color: #6b7280;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        header {
+            background-color: white;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        nav {
+            display: flex;
+            gap: 1rem;
+        }
+        nav button {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            white-space: nowrap; /* 이 줄을 추가하세요 */
+        }
+        nav button:hover {
+            color: var(--primary-color);
+        }
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        h1, h2 {
+            text-align: center;
+            color: var(--text-color);
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+        .content-wrapper {
+            display: flex;
+            gap: 2rem;
+        }
+        .generator-container, .result-container {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .input-group {
+            margin-bottom: 2.5rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        .sub-label {
+            font-size: 0.875rem;
+            color: var(--light-text-color);
+            margin-top: 0.75rem;
+            display: block;
+        }
+        input[type="text"] {
+            width: calc(100% - 2rem);
+            padding: 0.75rem 1rem; 
+            margin: 0 auto; 
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+        .slider-container {
+            margin-top: 1rem;
+        }
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: #d1d5db;
+            outline: none;
+            opacity: 0.7;
+            transition: opacity .2s;
+            margin-top: 0.5rem;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .slider::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .slider::-webkit-slider-thumb:hover,
+        .slider::-moz-range-thumb:hover {
+            background: var(--secondary-color);
+        }
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+            color: var(--light-text-color);
+            font-size: 0.875rem;
+        }
+        .generate-button {
+            margin-top: auto;
+        }
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+        }
+        button:hover {
+            background-color: var(--secondary-color);
+        }
+        button:active {
+            transform: translateY(1px);
+        }
+        button:disabled {
+            background-color: #c7d2fe;
+            cursor: not-allowed;
+        }
+        .result-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .result-image {
+            max-width: 100%;
+            height: auto;
+            max-height: 400px;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            margin-bottom: 2rem;
+        }
+        .result-image:hover {
+            transform: scale(1.02);
+        }
+        .result-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: auto;
+            width: 100%;
+        }
+        .result-actions button {
+            width: auto;
+            padding: 0.75rem 1.5rem;
+        }
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+            .generator-container, .result-container {
+                width: 100%;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">Armigo</div>
+            <nav>
+                <button onclick="location.href='/'">홈으로</button>
+                <button onclick="location.href='/mypage'">마이페이지</button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1>당신만의 완벽한 웨딩 드레스를 만들어보세요</h1>
+        
+        <div class="content-wrapper">
+            <div class="generator-container">
+                <div class="input-group">
+                    <label for="prompt">
+                        웨딩 드레스 설명
+                    </label>
+                    <span class="sub-label">원하는 웨딩 드레스의 특징을 자세히 적어주세요</span>
+                    <input type="text" id="prompt" placeholder="예: 긴 소매와 레이스 디테일이 있는 우아한 머메이드 스타일 드레스" aria-describedby="prompt-description">
+                </div>
+
+                <div class="input-group">
+                    <label for="complexity">
+                        복잡도
+                    </label>
+                    <span class="sub-label">드레스 디자인의 복잡도를 조절합니다</span>
+                    <div class="slider-container">
+                        <input type="range" id="complexity" min="0" max="100" value="50" class="slider" aria-describedby="complexity-description">
+                        <div class="slider-labels">
+                            <span>심플</span>
+                            <span>복잡</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="generate-button">
+                    <button id="generate-btn">드레스 생성하기</button>
+                </div>
+            </div>
+
+            <div class="result-container">
+                <h2>생성된 웨딩 드레스</h2>
+                <img id="result-image" class="result-image" src="https://via.placeholder.com/400x400?text=Your+Wedding+Dress" alt="생성된 웨딩 드레스">
+                <div class="result-actions">
+                    <button id="save-btn">저장</button>
+                    <button id="use-btn">바로 사용</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const generateBtn = document.getElementById('generate-btn');
+        const promptInput = document.getElementById('prompt');
+        const complexitySlider = document.getElementById('complexity');
+        const resultImage = document.getElementById('result-image');
+        const saveBtn = document.getElementById('save-btn');
+        const useBtn = document.getElementById('use-btn');
+
+        generateBtn.addEventListener('click', () => {
+            const prompt = promptInput.value;
+            const complexity = complexitySlider.value;
+
+            if (prompt) {
+                generateBtn.disabled = true;
+                generateBtn.textContent = '생성 중...';
+                resultImage.style.opacity = '0.5';
+                saveBtn.style.display = 'none';
+                useBtn.style.display = 'none';
+
+                // -------------------------------------------------
+                // Stable Diffusion API 호출 
+                // -------------------------------------------------
+                
+                /*
+                    
+                    드  레  스  생  성
+
+                */
+            }
+        });
+
+        saveBtn.addEventListener('click', () => {
+            alert('드레스가 저장되었습니다!');
+        });
+
+        useBtn.addEventListener('click', () => {
+            alert('드레스를 바로 사용합니다!');
+        });
+    </script>
+</body>
+</html>

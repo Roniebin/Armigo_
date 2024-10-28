@@ -5,7 +5,7 @@ import os
 import time
 from urllib.parse import urljoin
 
-# 웹드라이버 설정
+# 웹드라이버 설정 
 
 '''
 # 숲속드레스 !!
